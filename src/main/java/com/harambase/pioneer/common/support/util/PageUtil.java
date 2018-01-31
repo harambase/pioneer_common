@@ -1,5 +1,8 @@
 package com.harambase.pioneer.common.support.util;
 
+/**
+ * Created by Administrator on 2017/4/1.
+ */
 public class PageUtil {
 
     public static int getcPg(String currentPage) {
@@ -21,7 +24,7 @@ public class PageUtil {
     public static int getIntegerPars(String param) {
         if (null != param) {
             try {
-                return Integer.valueOf((String) param);
+                return Integer.valueOf(param);
             } catch (Exception e) {
                 return -1;
             }

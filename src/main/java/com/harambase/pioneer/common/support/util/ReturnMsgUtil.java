@@ -1,5 +1,6 @@
 package com.harambase.pioneer.common.support.util;
 
+
 import com.harambase.pioneer.common.HaramMessage;
 import com.harambase.pioneer.common.constant.FlagDict;
 
