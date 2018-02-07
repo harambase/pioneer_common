@@ -2,15 +2,14 @@ package com.harambase.pioneer.common.constant;
 
 public enum RoleType {
 
-    USER("用户", 1),
-    ADMIN("管理员", 2),
-    TEACH("教务", 3),
-    LOGISTIC("后勤", 4),
-    SYSTEM("系统", 5),
-    STUDENT("学生", 6),
-    FACULTY("教师", 7),
-    ADVISOR("导师", 8);
-
+    USER("ROLE_USER", 1),
+    ADMIN("ROLE_ADMIN", 2),
+    TEACH("ROLE_TEACH", 3),
+    LOGISTIC("ROLE_LOGISTIC", 4),
+    SYSTEM("ROLE_SYSTEM", 5),
+    STUDENT("ROLE_STUDENT", 6),
+    FACULTY("ROLE_FACULTY", 7),
+    ADVISOR("ROLE_ADVISOR", 8);
 
     // 成员变量
     private String roleName;
