@@ -2,7 +2,7 @@ package com.harambase.pioneer.common;
 
 import java.util.HashMap;
 
-public class HaramMessage extends HashMap {
+public class ResultMap extends HashMap {
 
     public int getCode() {
         return (int) super.get("code");

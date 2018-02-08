@@ -1,6 +1,6 @@
 package com.harambase.pioneer.common.constant;
 
-public enum FlagDict {
+public enum SystemConst {
 
     SUCCESS("操作成功", 2001),
     FAIL("操作失败", 2002),
@@ -15,20 +15,20 @@ public enum FlagDict {
     TIME_CONFLICT("时间冲突", 2011),
     PIN_EXISTS("该时段识别码已生成", 2012);
 
-    private String m;
-    private int v;
+    private String msg;
+    private int code;
 
-    FlagDict(String m, int v) {
-        this.m = m;
-        this.v = v;
+    SystemConst(String msg, int code) {
+        this.msg = msg;
+        this.code = code;
     }
 
-    public String getM() {
-        return m;
+    public String getMsg() {
+        return msg;
     }
 
-    public int getV() {
-        return v;
+    public int getCode() {
+        return code;
     }
 
 }

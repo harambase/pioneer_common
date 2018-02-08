@@ -1,6 +1,6 @@
 package com.harambase.pioneer.common.constant;
 
-public enum RoleType {
+public enum RoleConst {
 
     USER("ROLE_USER", 1),
     ADMIN("ROLE_ADMIN", 2),
@@ -15,7 +15,7 @@ public enum RoleType {
     private String roleName;
     private int roleId;
 
-    RoleType(String roleName, int roleId) {
+    RoleConst(String roleName, int roleId) {
         this.roleName = roleName;
         this.roleId = roleId;
     }

@@ -1,37 +1,37 @@
 package com.harambase.pioneer.common.support.util;
 
 
-import com.harambase.pioneer.common.HaramMessage;
-import com.harambase.pioneer.common.constant.FlagDict;
+import com.harambase.pioneer.common.ResultMap;
+import com.harambase.pioneer.common.constant.SystemConst;
 
 public class ReturnMsgUtil {
 
-    public static HaramMessage success(Object data) {
-        HaramMessage haramMessage = new HaramMessage();
-        haramMessage.setData(data);
-        haramMessage.setCode(FlagDict.SUCCESS.getV());
-        haramMessage.setMsg(FlagDict.SUCCESS.getM());
-        return haramMessage;
+    public static ResultMap success(Object data) {
+        ResultMap resultMap = new ResultMap();
+        resultMap.setData(data);
+        resultMap.setCode(SystemConst.SUCCESS.getCode());
+        resultMap.setMsg(SystemConst.SUCCESS.getMsg());
+        return resultMap;
     }
 
-    public static HaramMessage fail() {
-        HaramMessage haramMessage = new HaramMessage();
-        haramMessage.setCode(FlagDict.FAIL.getV());
-        haramMessage.setMsg(FlagDict.FAIL.getM());
-        return haramMessage;
+    public static ResultMap fail() {
+        ResultMap resultMap = new ResultMap();
+        resultMap.setCode(SystemConst.FAIL.getCode());
+        resultMap.setMsg(SystemConst.FAIL.getMsg());
+        return resultMap;
     }
 
-    public static HaramMessage systemError() {
-        HaramMessage haramMessage = new HaramMessage();
-        haramMessage.setCode(FlagDict.SYSTEM_ERROR.getV());
-        haramMessage.setMsg(FlagDict.SYSTEM_ERROR.getM());
-        return haramMessage;
+    public static ResultMap systemError() {
+        ResultMap resultMap = new ResultMap();
+        resultMap.setCode(SystemConst.SYSTEM_ERROR.getCode());
+        resultMap.setMsg(SystemConst.SYSTEM_ERROR.getMsg());
+        return resultMap;
     }
 
-    public static HaramMessage custom(FlagDict flagDict) {
-        HaramMessage haramMessage = new HaramMessage();
-        haramMessage.setCode(flagDict.getV());
-        haramMessage.setMsg(flagDict.getM());
-        return haramMessage;
+    public static ResultMap custom(SystemConst systemConst) {
+        ResultMap resultMap = new ResultMap();
+        resultMap.setCode(systemConst.getCode());
+        resultMap.setMsg(systemConst.getMsg());
+        return resultMap;
     }
 }

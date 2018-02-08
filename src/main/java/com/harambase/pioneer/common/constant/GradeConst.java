@@ -1,6 +1,6 @@
 package com.harambase.pioneer.common.constant;
 
-public enum GradeDict {
+public enum GradeConst {
 
     A("A", 4.0),
     AB("AB", 3.5),
@@ -15,7 +15,7 @@ public enum GradeDict {
     private String grade;
     private double point;
 
-    GradeDict(String grade, double point) {
+    GradeConst(String grade, double point) {
         this.grade = grade;
         this.point = point;
     }
