@@ -77,6 +77,26 @@ public class FileUtil {
         out.close();
     }
 
+    public static void downloadFileFromFTPToLocal(String fileName, String filePath, String localPath, String server, String username, String password) throws Exception{
+
+        byte[] bytes = fileByteFromFtp(filePath, server, username, password);
+        fileName = new String(fileName.getBytes(), "ISO-8859-1");
+
+        String newLocalPath = localPath + fileName;
+
+        File newDir = new File(localPath);
+        newDir.mkdirs();
+
+        File newFile = new File(newLocalPath);
+        boolean exist = newFile.createNewFile();
+
+        OutputStream outputStream = new FileOutputStream(newFile);
+        outputStream.write(bytes);
+
+        outputStream.flush();
+        outputStream.close();
+    }
+
     public static String uploadFileToFtpServer(MultipartFile file, String dir, String server, String username, String password) {
 
         String fileName = file.getOriginalFilename();
@@ -183,12 +203,12 @@ public class FileUtil {
 
     }
 
-    private static String getFileLogicalName(String filePath) {
+    public static String getFileLogicalName(String filePath) {
         String[] paths = filePath.split("/");
         return paths[paths.length - 1];
     }
 
-    private static String getFileDirPath(String filePath) {
+    public static String getFileDirPath(String filePath) {
         String[] paths = filePath.split("/");
         String dirPath = "/";
         for (int i = 1; i < paths.length - 1; i++) {
@@ -197,7 +217,7 @@ public class FileUtil {
         return dirPath;
     }
 
-    private static byte[] fileByteFromFtp(String filePath, String server, String username, String password) {
+    public static byte[] fileByteFromFtp(String filePath, String server, String username, String password) {
 
         byte[] bytes = {};
         FTPClient ftpClient = new FTPClient();
