@@ -20,7 +20,7 @@ public class Config {
 
     static {
         try {
-            serverPath = ResourceUtils.getURL("classpath:").getPath();
+            serverPath = Thread.currentThread().getContextClassLoader().getResource("").getPath();
         } catch (Exception e) {
             e.printStackTrace();
         }

@@ -62,6 +62,13 @@ public class FileUtil {
         return imgPath;
     }
 
+    public static void saveFileToLocal(MultipartFile file, String fileName, String localPath) throws Exception{
+        InputStream fileInputStream = file.getInputStream();
+        byte[] bytes = IOUtils.toByteArray(fileInputStream);
+        saveFile(bytes, fileName, localPath);
+
+    }
+
     public static void downloadFileFromFtpServer(HttpServletResponse response, String fileName, String filePath, String server, String username, String password) throws Exception {
 
         byte[] bytes = fileByteFromFtp(filePath, server, username, password);
@@ -80,21 +87,7 @@ public class FileUtil {
     public static void downloadFileFromFTPToLocal(String fileName, String filePath, String localPath, String server, String username, String password) throws Exception{
 
         byte[] bytes = fileByteFromFtp(filePath, server, username, password);
-        fileName = new String(fileName.getBytes(), "ISO-8859-1");
-
-        String newLocalPath = localPath + fileName;
-
-        File newDir = new File(localPath);
-        newDir.mkdirs();
-
-        File newFile = new File(newLocalPath);
-        boolean exist = newFile.createNewFile();
-
-        OutputStream outputStream = new FileOutputStream(newFile);
-        outputStream.write(bytes);
-
-        outputStream.flush();
-        outputStream.close();
+        saveFile(bytes, fileName, localPath);
     }
 
     public static String uploadFileToFtpServer(MultipartFile file, String dir, String server, String username, String password) {
@@ -132,6 +125,9 @@ public class FileUtil {
             ftpClient.makeDirectory(dirName);
             ftpClient.changeWorkingDirectory(dirName);
             InputStream fis = file.getInputStream();
+
+            //java中，内网用被动模式 ，外网连接时用主动模式，服务器相应改动（只用上线功能用被动模式去连接ftp报错连接不上）
+            ftpClient.enterLocalPassiveMode();
             ftpClient.storeFile(fileLogicalName, fis);
 
             ftpClient.logout();
@@ -201,6 +197,25 @@ public class FileUtil {
 
         }
 
+    }
+
+    public static void saveFile(byte[] bytes, String fileName, String localPath) throws Exception{
+
+        fileName = new String(fileName.getBytes(), "ISO-8859-1");
+
+        String newLocalPath = localPath + fileName;
+
+        File newDir = new File(localPath);
+        newDir.mkdirs();
+
+        File newFile = new File(newLocalPath);
+        boolean exist = newFile.createNewFile();
+
+        OutputStream outputStream = new FileOutputStream(newFile);
+        outputStream.write(bytes);
+
+        outputStream.flush();
+        outputStream.close();
     }
 
     public static String getFileLogicalName(String filePath) {
