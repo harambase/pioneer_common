@@ -263,6 +263,9 @@ public class FileUtil {
             ftpClient.changeWorkingDirectory(dirPath);
             logger.info("FTP: FTP current working directory = " + ftpClient.printWorkingDirectory());
 
+            //java中，内网用被动模式 ，外网连接时用主动模式，服务器相应改动（只用上线功能用被动模式去连接ftp报错连接不上）
+            ftpClient.enterLocalPassiveMode();
+
             InputStream ftpInputStream = ftpClient.retrieveFileStream(fileLogicalName);
             bytes = IOUtils.toByteArray(ftpInputStream);
 
