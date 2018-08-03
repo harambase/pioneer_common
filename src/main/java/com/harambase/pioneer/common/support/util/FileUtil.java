@@ -174,6 +174,9 @@ public class FileUtil {
                 return false;
             }
 
+            //java中，内网用被动模式 ，外网连接时用主动模式，服务器相应改动（只用上线功能用被动模式去连接ftp报错连接不上）
+            ftpClient.enterLocalPassiveMode();
+
             error = ftpClient.deleteFile(filePath);
             if (error) {
                 logger.error("FTP: FTP file deletion failed. File path: " + filePath);
