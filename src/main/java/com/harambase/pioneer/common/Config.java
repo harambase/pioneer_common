@@ -14,7 +14,7 @@ public class Config {
     public final static int SERVER_PORT = Integer.parseInt(resourceBundle.getString("server.port"));
 
     public final static String FTP_PATH = resourceBundle.getString("ftp.path");
-    public final static String FTP_SERVER   = resourceBundle.getString("ftp.server");
+    public final static String FTP_SERVER = resourceBundle.getString("ftp.server");
     public final static String FTP_USERNAME = resourceBundle.getString("ftp.user");
     public final static String FTP_PASSWORD = resourceBundle.getString("ftp.password");
 

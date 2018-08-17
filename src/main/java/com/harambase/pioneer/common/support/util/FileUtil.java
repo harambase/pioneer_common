@@ -17,12 +17,12 @@ public class FileUtil {
 
     private final static Logger logger = LoggerFactory.getLogger("FileUtil");
 
-    @Deprecated
+
     public static void downloadFile(String fileName, String logicalPath, HttpServletResponse response) throws Exception {
 
         //中文支持
         fileName = new String(fileName.getBytes(), "ISO-8859-1");
-        String filePath = Config.TEMP_FILE_PATH + logicalPath;
+        String filePath = Config.serverPath + logicalPath;
 
         response.reset();
         response.setHeader("Content-Disposition", "attachment; filename=\"" + fileName);
@@ -62,7 +62,7 @@ public class FileUtil {
         return imgPath;
     }
 
-    public static void saveFileToLocal(MultipartFile file, String fileName, String localPath) throws Exception{
+    public static void saveFileToLocal(MultipartFile file, String fileName, String localPath) throws Exception {
         InputStream fileInputStream = file.getInputStream();
         byte[] bytes = IOUtils.toByteArray(fileInputStream);
         saveFile(bytes, fileName, localPath);
@@ -84,7 +84,7 @@ public class FileUtil {
         out.close();
     }
 
-    public static void downloadFileFromFTPToLocal(String fileName, String filePath, String localPath, String server, String username, String password) throws Exception{
+    public static void downloadFileFromFTPToLocal(String fileName, String filePath, String localPath, String server, String username, String password) throws Exception {
 
         byte[] bytes = fileByteFromFtp(filePath, server, username, password);
         saveFile(bytes, fileName, localPath);
@@ -202,7 +202,7 @@ public class FileUtil {
 
     }
 
-    public static void saveFile(byte[] bytes, String fileName, String localPath) throws Exception{
+    public static void saveFile(byte[] bytes, String fileName, String localPath) throws Exception {
 
         fileName = new String(fileName.getBytes(), "ISO-8859-1");
 
